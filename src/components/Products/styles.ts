@@ -15,7 +15,7 @@ export const Image = styled.image`
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 220px;
+  height: 180px;
 `
 
 export const ProductsAbout = styled.div`
