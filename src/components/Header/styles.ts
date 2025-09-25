@@ -9,14 +9,17 @@ export const HeaderContainer = styled.div`
   display: flex;
 
   ${Container} {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-`
 
-export const Logo = styled.img`
-  margin-left: 2px;
+  img {
+    position: absolute;
+    inset: 0;
+    margin: 56px auto;
+  }
 `
 
 export const Cart = styled.p`

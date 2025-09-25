@@ -3,7 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { IoArrowBack } from 'react-icons/io5'
 import logo from '../../assets/images/logo.png'
 import heroBackground from '../../assets/images/hero-background.png'
-import { Cart, HeaderContainer, Logo, Title } from './styles'
+import { Cart, HeaderContainer, Title } from './styles'
 import { Container } from '../../styles'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
@@ -24,7 +24,7 @@ export const Header = ({ openSideBar }: Props) => {
             Restaurantes
           </Title>
         </Link>
-        <Logo src={logo} alt="EFood" />
+        <img src={logo} alt="EFood" />
         <Cart onClick={openSideBar}>
           {items.length} pedido(s)
           <FaShoppingCart />
