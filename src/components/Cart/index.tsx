@@ -41,12 +41,14 @@ export const Cart = ({ closeSideBar, openAddress }: Props) => {
           </CartItem>
         ))}
       </CartContent>
-      <CartEnd>
-        <Title>Valor total:</Title>
-        <Price>
-          R$ {items.reduce((acc, i) => acc + i.price, 0).toFixed(2)}
-        </Price>
-      </CartEnd>
+      {items.length >= 1 && (
+        <CartEnd>
+          <Title>Valor total:</Title>
+          <Price>
+            R$ {items.reduce((acc, i) => acc + i.price, 0).toFixed(2)}
+          </Price>
+        </CartEnd>
+      )}
       {items.length === 0 ? (
         <Button>Adicione um item antes de prosseguir</Button>
       ) : (
