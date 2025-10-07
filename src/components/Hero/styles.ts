@@ -11,7 +11,7 @@ export const HeroContainer = styled.div`
 `
 
 export const Logo = styled.img`
-  width: 125px;
+  width: 126px;
   height: 58px;
   margin-top: 56px;
 `

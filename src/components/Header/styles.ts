@@ -18,6 +18,7 @@ export const HeaderContainer = styled.div`
   img {
     position: absolute;
     inset: 0;
+    width: 126px;
     margin: 56px auto;
   }
 `

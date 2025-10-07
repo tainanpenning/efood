@@ -7,6 +7,10 @@ export const FooterContainer = styled.div`
   align-items: center;
   background-color: ${Colors.beige};
   padding: 40px 0;
+  position: absolute;
+  bottom: 1;
+  left: 0;
+  width: 100%;
 `
 
 export const Logo = styled.img`
