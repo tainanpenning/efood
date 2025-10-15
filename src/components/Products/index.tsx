@@ -10,18 +10,25 @@ import {
 
 type Props = {
   onOpen: () => void
-  image: string
-  title: string
+  photo: string
+  name: string
   description: string
 }
 
-export const Products = ({ onOpen, image, title, description }: Props) => {
+export const Products = ({ onOpen, photo, name, description }: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length >= 132) {
+      return description.slice(0, 129) + '...'
+    }
+    return description
+  }
+
   return (
     <ProductsContainer>
       <ProductsAbout>
-        <Image style={{ backgroundImage: `url(${image})` }} />
-        <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Image style={{ backgroundImage: `url(${photo})` }} />
+        <Title>{name}</Title>
+        <Description>{getDescription(description)}</Description>
       </ProductsAbout>
       <ButtonRow>
         <Button onClick={onOpen}>Mais detalhes</Button>

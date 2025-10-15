@@ -33,9 +33,9 @@ export const Cart = ({ closeSideBar, openAddress }: Props) => {
             <Icon onClick={() => dispatch(removeItem(index))}>
               <FaRegTrashAlt size={16} />
             </Icon>
-            <Image src={item.image} alt="" />
+            <Image src={item.photo} alt="" />
             <CartAbout>
-              <Title>{item.title}</Title>
+              <Title>{item.name}</Title>
               <Price>R$ {item.price}</Price>
             </CartAbout>
           </CartItem>

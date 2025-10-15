@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { FaStar } from 'react-icons/fa'
 import { Colors, Container } from '../../styles'
 import {
@@ -11,47 +12,33 @@ import {
   TagContainer,
   Title
 } from './styles'
-import { Link } from 'react-router'
-import { useEffect, useState } from 'react'
 
 type Props = {
   title: string
   rating: number
   description: string
-  image: string
-  food: string
-  contrast?: string
+  cover: string
+  type: string
+  contrast: boolean
   id: number
-  perfilId: number
 }
 
 export const Restaurants = ({
   title,
   rating,
   description,
-  image,
-  food,
+  cover,
+  type,
   contrast,
-  id,
-  perfilId
+  id
 }: Props) => {
-  const [showContrast, setShowContrast] = useState(false)
-
-  useEffect(() => {
-    if (rating >= 4.9) {
-      setShowContrast(true)
-    } else {
-      setShowContrast(false)
-    }
-  }, [rating])
-
   return (
     <Container>
       <CardBanner>
-        <Image style={{ backgroundImage: `url(${image})` }} />
+        <Image style={{ backgroundImage: `url(${cover})` }} />
         <TagContainer>
-          {showContrast && <Tag>{contrast}</Tag>}
-          <Tag>{food}</Tag>
+          {contrast && <Tag>Destaque do dia</Tag>}
+          <Tag>{type}</Tag>
         </TagContainer>
       </CardBanner>
       <CardAbout>
@@ -62,7 +49,7 @@ export const Restaurants = ({
           </Rating>
         </Title>
         <Description>{description}</Description>
-        <Link to={`/perfil/${perfilId}`} state={{ food, title, image }}>
+        <Link to={`/perfil/${id}`}>
           <Button type="button">Saiba mais</Button>
         </Link>
       </CardAbout>

@@ -19,10 +19,10 @@ import { RootState } from '../../store'
 type Props = {
   open: boolean
   closeModal: () => void
-  image: string
-  title: string
-  description2: string
-  descriptionAmount: string
+  photo: string
+  name: string
+  description: string
+  portion: string
   price: number
   id: number
 }
@@ -30,10 +30,10 @@ type Props = {
 export const Modal = ({
   open,
   closeModal,
-  image,
-  title,
-  description2,
-  descriptionAmount,
+  photo,
+  name,
+  description,
+  portion,
   price,
   id
 }: Props) => {
@@ -63,13 +63,13 @@ export const Modal = ({
           <Icon>
             <GrClose onClick={closeModal} size={16} />
           </Icon>
-          <Image style={{ backgroundImage: `url(${image})` }} />
+          <Image style={{ backgroundImage: `url(${photo})` }} />
           <ModalContent>
-            <Title>{title}</Title>
-            <Description>{description2}</Description>
-            <Description>{descriptionAmount}</Description>
+            <Title>{name}</Title>
+            <Description>{description}</Description>
+            <Description>{portion}</Description>
             <Button
-              onClick={() => dispatch(addItem({ title, image, price, id }))}
+              onClick={() => dispatch(addItem({ name, photo, price, id }))}
             >
               Adicionar ao carrinho - R$ {price}
             </Button>

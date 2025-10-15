@@ -52,3 +52,11 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 8px;
 `
+
+export const Loading = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  color: ${Colors.light_red};
+  padding: 32px;
+  text-align: center;
+`

@@ -1,40 +1,30 @@
 import { useState } from 'react'
-import { Dishes, Perfil } from '../../models'
+import { Dish } from '../../models'
 import { Container } from '../../styles'
 import { Modal } from '../Modal'
 import { Products } from '../Products'
 import { Alert, List } from './styles'
-import { useParams } from 'react-router'
 
 type Props = {
-  dish: Dishes[]
-  perfils: Perfil[]
+  dishes: Dish[]
 }
 
-export const ProductsList = ({ dish, perfils }: Props) => {
-  const [selectedDish, setSelectedDish] = useState<Dishes | null>(null)
-
-  const { id } = useParams()
-  const perfilId = Number(id)
-
-  const perfil = perfils.find((p) => p.id === perfilId)
-  const filteredDishes = dish.filter((d) => d.perfilId === perfilId)
-
-  if (!perfil) return null
+export const ProductsList = ({ dishes }: Props) => {
+  const [selectedDish, setSelectedDish] = useState<Dish | null>(null)
 
   return (
     <Container>
-      {filteredDishes.length === 0 ? (
+      {dishes.length === 0 ? (
         <Alert>Nenhum produto neste perfil</Alert>
       ) : (
         <List>
-          {filteredDishes.map((d) => (
+          {dishes.map((d) => (
             <Products
               key={d.id}
               onOpen={() => setSelectedDish(d)}
-              image={d.image}
-              title={d.title}
-              description={d.description}
+              photo={d.foto}
+              name={d.nome}
+              description={d.descricao}
             />
           ))}
         </List>
@@ -44,11 +34,11 @@ export const ProductsList = ({ dish, perfils }: Props) => {
           closeModal={() => setSelectedDish(null)}
           open={true}
           id={selectedDish.id}
-          image={selectedDish.image}
-          description2={selectedDish.description2}
-          descriptionAmount={selectedDish.descriptionAmount}
-          price={selectedDish.price}
-          title={selectedDish.title}
+          photo={selectedDish.foto}
+          description={selectedDish.descricao}
+          portion={selectedDish.porcao}
+          price={selectedDish.preco}
+          name={selectedDish.nome}
         />
       )}
     </Container>
