@@ -15,6 +15,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../../store/cartReducer'
 import { RootState } from '../../store'
+import { formatPrice } from '../Cart'
 
 type Props = {
   open: boolean
@@ -71,7 +72,7 @@ export const Modal = ({
             <Button
               onClick={() => dispatch(addItem({ name, photo, price, id }))}
             >
-              Adicionar ao carrinho - R$ {price}
+              Adicionar ao carrinho - {formatPrice(price)}
             </Button>
             {counter > 0 && <Counter>x{counter} Adicionados</Counter>}
           </ModalContent>

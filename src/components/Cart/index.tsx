@@ -20,9 +20,22 @@ type Props = {
   openAddress: () => void
 }
 
+export const formatPrice = (price = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
+}
+
 export const Cart = ({ closeSideBar, openAddress }: Props) => {
   const items = useSelector((state: RootState) => state.cart.items)
   const dispatch = useDispatch()
+
+  const getFullPrice = () => {
+    return items.reduce((acc, total) => {
+      return (acc += total.price)
+    }, 0)
+  }
 
   return (
     <CartContainer>
@@ -36,7 +49,7 @@ export const Cart = ({ closeSideBar, openAddress }: Props) => {
             <Image src={item.photo} alt="" />
             <CartAbout>
               <Title>{item.name}</Title>
-              <Price>R$ {item.price}</Price>
+              <Price>{formatPrice(item.price)}</Price>
             </CartAbout>
           </CartItem>
         ))}
@@ -44,9 +57,7 @@ export const Cart = ({ closeSideBar, openAddress }: Props) => {
       {items.length >= 1 && (
         <CartEnd>
           <Title>Valor total:</Title>
-          <Price>
-            R$ {items.reduce((acc, i) => acc + i.price, 0).toFixed(2)}
-          </Price>
+          <Price>{formatPrice(getFullPrice())}</Price>
         </CartEnd>
       )}
       {items.length === 0 ? (
